@@ -6,19 +6,22 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
+
 const server = http.createServer(app);
 
 // Permitir CORS desde tu frontend (por ejemplo localhost:5173)
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://backen-cajero.onrender.com",
     methods: ["GET", "POST"]
   }
 });
 
 
+app.use(express.static('public'))
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://backen-cajero.onrender.com",
   credentials: true
 }));
 
